@@ -57,7 +57,7 @@ const HomePage = () => {
           onClick={handleSubmit}
           className="mt-4 w-full p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
         >
-          Submit
+          Enviar
         </button>
 
         {/* Scrollable Box for Names */}
