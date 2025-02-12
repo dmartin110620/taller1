@@ -45,9 +45,9 @@ const HomePage = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-blue-500">
       <div className="max-w-lg w-full p-6 bg-gray-900 rounded-lg shadow-lg text-cool-white">
-        <h1 className="text-2xl text-cool-white mb-4 text-center">Enter Your Full Name</h1>
+        <h1 className="text-2xl text-cool-white mb-4 text-center">Ingresa el Nombre</h1>
         <InputComponent
-          name="Full Name"
+          name="Nombre Completo"
           onChange={setFullName}
           placeholder="Ingresa el nombre"
           type="text"
@@ -62,7 +62,7 @@ const HomePage = () => {
 
         {/* Scrollable Box for Names */}
         <div className="mt-6 max-h-40 overflow-y-auto bg-gray-800 p-4 rounded-lg border border-gray-700">
-          <h2 className="text-lg text-gray-300 mb-2">Submitted Names:</h2>
+          <h2 className="text-lg text-gray-300 mb-2">Nombres ingresados:</h2>
           <ul className="text-white">
             {namesList.map((name, index) => (
               <li key={index} className="p-2 border-b border-gray-700 last:border-b-0">
