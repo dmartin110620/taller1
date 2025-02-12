@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import InputComponent from '../components/inputComponent';
 
-const HomePage = () => {
+function HomePage() {
   const [fullName, setFullName] = useState('');
   const [namesList, setNamesList] = useState<string[]>([]);
 
   useEffect(() => {
-    const fetchNames = async () => {
+    async function fetchNames() {
       try {
         const response = await fetch('/api/names');
         const data = await response.json();
@@ -14,12 +14,12 @@ const HomePage = () => {
       } catch (error) {
         console.error('Error fetching names:', error);
       }
-    };
+    }
 
     fetchNames();
   }, []);
 
-  const handleSubmit = async () => {
+  async function handleSubmit() {
     if (!fullName.trim()) return;
 
     try {
@@ -40,12 +40,12 @@ const HomePage = () => {
     } catch (error) {
       console.error('Error sending name:', error);
     }
-  };
+  }
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-blue-500">
-      <div className="max-w-lg w-full p-6 bg-gray-900 rounded-lg shadow-lg text-cool-white">
-        <h1 className="text-2xl text-cool-white mb-4 text-center">Ingresa el Nombre</h1>
+      <div className="max-w-lg w-full p-6 bg-gray-900 rounded-lg shadow-lg text-white">
+        <h1 className="text-2xl text-white mb-4 text-center">Ingresa el Nombre</h1>
         <InputComponent
           name="Nombre Completo"
           onChange={setFullName}
@@ -74,6 +74,6 @@ const HomePage = () => {
       </div>
     </div>
   );
-};
+}
 
 export default HomePage;
