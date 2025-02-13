@@ -5,10 +5,19 @@ WORKDIR /frontend
 # Copia los archivos de dependencias primero (para aprovechar la caché)
 COPY package.json package-lock.json ./
 #  Instala las dependencias
-RUN npm install
+RUN npm ci --legacy-peer-deps
 #  Copia todo el código fuente de la app
 COPY . .
-#  Expone el puerto 5173 (donde corre Vite por defecto)
-EXPOSE 5173
-# Inicia Vite en modo desarrollo
-CMD ["npm", "run", "dev", "--", "--host"]
+
+RUN npm rebuild esbuild --force
+# Construye los archivos estáticos con Vite
+RUN npm run build
+
+# Instala un servidor estático ligero
+RUN npm install -g serve
+
+# Expone el puerto donde correrá el servidor
+EXPOSE 3000
+
+# Usa "serve" para servir los archivos estáticos de la carpeta "dist"
+CMD ["serve", "-s", "dist", "-l", "3000"]
